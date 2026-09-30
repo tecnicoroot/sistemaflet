@@ -1,0 +1,41 @@
+[project]
+name = "sistemaflet"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "David Luis da Silva", email = "tecnicoroot@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "flet[all]>=1.0.2",
+    "pydantic-settings>=2.15.0",
+    "pyotp>=2.10.0",
+]
+
+[project.scripts]
+sistemaflet = "sistemaflet:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.9",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"   # ajuste para o seu requires-python
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "N"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
